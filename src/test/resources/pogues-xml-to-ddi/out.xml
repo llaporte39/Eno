@@ -43,7 +43,8 @@
             </d:InstructionName>
             <d:InstructionText>
                <d:LiteralText>
-                  <d:Text xml:lang="fr-FR">For your information, the date of the last broadcast was on øLAST_BROADCASTø</d:Text>
+                  <d:Text xml:lang="fr-FR">For your information, the date of the last broadcast was on
+						øLAST_BROADCASTø</d:Text>
                </d:LiteralText>
             </d:InstructionText>
          </d:Instruction>
@@ -101,19 +102,6 @@
          </d:Instruction>
          <d:Instruction>
             <r:Agency>fr.insee</r:Agency>
-            <r:ID>d12</r:ID>
-            <r:Version>0.1.0</r:Version>
-            <d:InstructionName>
-               <r:String xml:lang="fr-FR">comment</r:String>
-            </d:InstructionName>
-            <d:InstructionText>
-               <d:LiteralText>
-                  <d:Text xml:lang="fr-FR"><xhtml:p><xhtml:b>Now we are going to know if you think that Jay is a gluton.</xhtml:b></xhtml:p></d:Text>
-               </d:LiteralText>
-            </d:InstructionText>
-         </d:Instruction>
-         <d:Instruction>
-            <r:Agency>fr.insee</r:Agency>
             <r:ID>j4nwc63q-CI-0-II-0</r:ID>
             <r:Version>0.1.0</r:Version>
             <d:InstructionName>
@@ -121,7 +109,8 @@
             </d:InstructionName>
             <d:InstructionText>
                <d:LiteralText>
-                  <d:Text xml:lang="fr-FR">The sum of percentages is: ¤jbcggtca-GOP¤ %. The total of percentages must be equal to 100%.</d:Text>
+                  <d:Text xml:lang="fr-FR">The sum of percentages is: ¤jbcggtca-GOP¤ %. The total of
+						percentages must be equal to 100%.</d:Text>
                </d:LiteralText>
                <d:ConditionalText>
                   <r:SourceParameterReference>
@@ -142,7 +131,7 @@
             </d:InstructionName>
             <d:InstructionText>
                <d:LiteralText>
-                  <d:Text xml:lang="fr-FR">Several answers possible: check off all the relevant boxes</d:Text>
+                  <d:Text xml:lang="fr-FR">Several answers possible: check off all the relevant boxes </d:Text>
                </d:LiteralText>
             </d:InstructionText>
          </d:Instruction>
@@ -168,24 +157,6 @@
             <d:ControlConstructReference>
                <r:Agency>fr.insee</r:Agency>
                <r:ID>d1e101</r:ID>
-               <r:Version>0.1.0</r:Version>
-               <r:TypeOfObject>IfThenElse</r:TypeOfObject>
-            </d:ControlConstructReference>
-            <d:ControlConstructReference>
-               <r:Agency>fr.insee</r:Agency>
-               <r:ID>d1e157</r:ID>
-               <r:Version>0.1.0</r:Version>
-               <r:TypeOfObject>IfThenElse</r:TypeOfObject>
-            </d:ControlConstructReference>
-            <d:ControlConstructReference>
-               <r:Agency>fr.insee</r:Agency>
-               <r:ID>d1e426</r:ID>
-               <r:Version>0.1.0</r:Version>
-               <r:TypeOfObject>IfThenElse</r:TypeOfObject>
-            </d:ControlConstructReference>
-            <d:ControlConstructReference>
-               <r:Agency>fr.insee</r:Agency>
-               <r:ID>d1e994</r:ID>
                <r:Version>0.1.0</r:Version>
                <r:TypeOfObject>IfThenElse</r:TypeOfObject>
             </d:ControlConstructReference>
@@ -501,7 +472,7 @@
                         <r:TypeOfObject>InParameter</r:TypeOfObject>
                      </r:TargetParameterReference>
                   </r:Binding>
-                  <r:CommandContent>not( d1e42-IP-1 != '1')</r:CommandContent>
+                  <r:CommandContent>not( d1e42-IP-1!= '1')</r:CommandContent>
                </r:Command>
             </d:IfCondition>
             <d:ThenConstructReference>
@@ -555,7 +526,7 @@
                         <r:TypeOfObject>InParameter</r:TypeOfObject>
                      </r:TargetParameterReference>
                   </r:Binding>
-                  <r:CommandContent>not( d1e101-IP-1 != '1')</r:CommandContent>
+                  <r:CommandContent>not( d1e101-IP-1!= '1')</r:CommandContent>
                </r:Command>
             </d:IfCondition>
             <d:ThenConstructReference>
@@ -579,162 +550,18 @@
                <r:Version>0.1.0</r:Version>
                <r:TypeOfObject>Sequence</r:TypeOfObject>
             </d:ControlConstructReference>
-         </d:Sequence>
-         <d:IfThenElse>
-            <r:Agency>fr.insee</r:Agency>
-            <r:ID>d1e157</r:ID>
-            <r:Version>0.1.0</r:Version>
-            <d:IfCondition>
-               <r:Command>
-                  <r:ProgramLanguage>xpath</r:ProgramLanguage>
-                  <r:InParameter isArray="false">
-                     <r:Agency>fr.insee</r:Agency>
-                     <r:ID>d1e157-IP-1</r:ID>
-                     <r:Version>0.1.0</r:Version>
-                     <r:ParameterName>
-                        <r:String xml:lang="fr-FR">READY</r:String>
-                     </r:ParameterName>
-                  </r:InParameter>
-                  <r:Binding>
-                     <r:SourceParameterReference>
-                        <r:Agency>fr.insee</r:Agency>
-                        <r:ID>j6p0np9q-QOP-jbgd3set</r:ID>
-                        <r:Version>0.1.0</r:Version>
-                        <r:TypeOfObject>OutParameter</r:TypeOfObject>
-                     </r:SourceParameterReference>
-                     <r:TargetParameterReference>
-                        <r:Agency>fr.insee</r:Agency>
-                        <r:ID>d1e157-IP-1</r:ID>
-                        <r:Version>0.1.0</r:Version>
-                        <r:TypeOfObject>InParameter</r:TypeOfObject>
-                     </r:TargetParameterReference>
-                  </r:Binding>
-                  <r:CommandContent>not( d1e157-IP-1 != '1')</r:CommandContent>
-               </r:Command>
-            </d:IfCondition>
-            <d:ThenConstructReference>
-               <r:Agency>fr.insee</r:Agency>
-               <r:ID>d1e157-THEN</r:ID>
-               <r:Version>0.1.0</r:Version>
-               <r:TypeOfObject>Sequence</r:TypeOfObject>
-            </d:ThenConstructReference>
-         </d:IfThenElse>
-         <d:Sequence>
-            <r:Agency>fr.insee</r:Agency>
-            <r:ID>d1e157-THEN</r:ID>
-            <r:Version>0.1.0</r:Version>
-            <r:Label>
-               <r:Content xml:lang="fr-FR"/>
-            </r:Label>
-            <d:TypeOfSequence codeListID="INSEE-TOS-CL-1">hideable</d:TypeOfSequence>
             <d:ControlConstructReference>
                <r:Agency>fr.insee</r:Agency>
                <r:ID>j6qe0h9q</r:ID>
                <r:Version>0.1.0</r:Version>
                <r:TypeOfObject>Sequence</r:TypeOfObject>
             </d:ControlConstructReference>
-         </d:Sequence>
-         <d:IfThenElse>
-            <r:Agency>fr.insee</r:Agency>
-            <r:ID>d1e426</r:ID>
-            <r:Version>0.1.0</r:Version>
-            <d:IfCondition>
-               <r:Command>
-                  <r:ProgramLanguage>xpath</r:ProgramLanguage>
-                  <r:InParameter isArray="false">
-                     <r:Agency>fr.insee</r:Agency>
-                     <r:ID>d1e426-IP-1</r:ID>
-                     <r:Version>0.1.0</r:Version>
-                     <r:ParameterName>
-                        <r:String xml:lang="fr-FR">READY</r:String>
-                     </r:ParameterName>
-                  </r:InParameter>
-                  <r:Binding>
-                     <r:SourceParameterReference>
-                        <r:Agency>fr.insee</r:Agency>
-                        <r:ID>j6p0np9q-QOP-jbgd3set</r:ID>
-                        <r:Version>0.1.0</r:Version>
-                        <r:TypeOfObject>OutParameter</r:TypeOfObject>
-                     </r:SourceParameterReference>
-                     <r:TargetParameterReference>
-                        <r:Agency>fr.insee</r:Agency>
-                        <r:ID>d1e426-IP-1</r:ID>
-                        <r:Version>0.1.0</r:Version>
-                        <r:TypeOfObject>InParameter</r:TypeOfObject>
-                     </r:TargetParameterReference>
-                  </r:Binding>
-                  <r:CommandContent>not( d1e426-IP-1 != '1')</r:CommandContent>
-               </r:Command>
-            </d:IfCondition>
-            <d:ThenConstructReference>
-               <r:Agency>fr.insee</r:Agency>
-               <r:ID>d1e426-THEN</r:ID>
-               <r:Version>0.1.0</r:Version>
-               <r:TypeOfObject>Sequence</r:TypeOfObject>
-            </d:ThenConstructReference>
-         </d:IfThenElse>
-         <d:Sequence>
-            <r:Agency>fr.insee</r:Agency>
-            <r:ID>d1e426-THEN</r:ID>
-            <r:Version>0.1.0</r:Version>
-            <r:Label>
-               <r:Content xml:lang="fr-FR"/>
-            </r:Label>
-            <d:TypeOfSequence codeListID="INSEE-TOS-CL-1">hideable</d:TypeOfSequence>
             <d:ControlConstructReference>
                <r:Agency>fr.insee</r:Agency>
                <r:ID>j4nw88h2</r:ID>
                <r:Version>0.1.0</r:Version>
                <r:TypeOfObject>Sequence</r:TypeOfObject>
             </d:ControlConstructReference>
-         </d:Sequence>
-         <d:IfThenElse>
-            <r:Agency>fr.insee</r:Agency>
-            <r:ID>d1e994</r:ID>
-            <r:Version>0.1.0</r:Version>
-            <d:IfCondition>
-               <r:Command>
-                  <r:ProgramLanguage>xpath</r:ProgramLanguage>
-                  <r:InParameter isArray="false">
-                     <r:Agency>fr.insee</r:Agency>
-                     <r:ID>d1e994-IP-1</r:ID>
-                     <r:Version>0.1.0</r:Version>
-                     <r:ParameterName>
-                        <r:String xml:lang="fr-FR">READY</r:String>
-                     </r:ParameterName>
-                  </r:InParameter>
-                  <r:Binding>
-                     <r:SourceParameterReference>
-                        <r:Agency>fr.insee</r:Agency>
-                        <r:ID>j6p0np9q-QOP-jbgd3set</r:ID>
-                        <r:Version>0.1.0</r:Version>
-                        <r:TypeOfObject>OutParameter</r:TypeOfObject>
-                     </r:SourceParameterReference>
-                     <r:TargetParameterReference>
-                        <r:Agency>fr.insee</r:Agency>
-                        <r:ID>d1e994-IP-1</r:ID>
-                        <r:Version>0.1.0</r:Version>
-                        <r:TypeOfObject>InParameter</r:TypeOfObject>
-                     </r:TargetParameterReference>
-                  </r:Binding>
-                  <r:CommandContent>not( d1e994-IP-1 != '1')</r:CommandContent>
-               </r:Command>
-            </d:IfCondition>
-            <d:ThenConstructReference>
-               <r:Agency>fr.insee</r:Agency>
-               <r:ID>d1e994-THEN</r:ID>
-               <r:Version>0.1.0</r:Version>
-               <r:TypeOfObject>Sequence</r:TypeOfObject>
-            </d:ThenConstructReference>
-         </d:IfThenElse>
-         <d:Sequence>
-            <r:Agency>fr.insee</r:Agency>
-            <r:ID>d1e994-THEN</r:ID>
-            <r:Version>0.1.0</r:Version>
-            <r:Label>
-               <r:Content xml:lang="fr-FR"/>
-            </r:Label>
-            <d:TypeOfSequence codeListID="INSEE-TOS-CL-1">hideable</d:TypeOfSequence>
             <d:ControlConstructReference>
                <r:Agency>fr.insee</r:Agency>
                <r:ID>j6qfx9qe</r:ID>
@@ -1233,7 +1060,10 @@
                         <r:TypeOfObject>InParameter</r:TypeOfObject>
                      </r:TargetParameterReference>
                   </r:Binding>
-                  <r:CommandContent>number(if (j4nwc63q-CI-0-IP-1='') then '0' else j4nwc63q-CI-0-IP-1) + number(if (j4nwc63q-CI-0-IP-2='') then '0' else j4nwc63q-CI-0-IP-2) + number(if (j4nwc63q-CI-0-IP-3='') then '0' else j4nwc63q-CI-0-IP-3) + number(if (j4nwc63q-CI-0-IP-4='') then '0' else j4nwc63q-CI-0-IP-4) + number(if (j4nwc63q-CI-0-IP-5='') then '0' else j4nwc63q-CI-0-IP-5) + number(if (j4nwc63q-CI-0-IP-6='') then '0' else j4nwc63q-CI-0-IP-6) + number(if (j4nwc63q-CI-0-IP-7='') then '0' else j4nwc63q-CI-0-IP-7) + number(if (j4nwc63q-CI-0-IP-8='') then '0' else j4nwc63q-CI-0-IP-8) + number(if (j4nwc63q-CI-0-IP-9='') then '0' else j4nwc63q-CI-0-IP-9) + number(if (j4nwc63q-CI-0-IP-10='') then '0' else j4nwc63q-CI-0-IP-10) != 100</r:CommandContent>
+                  <r:CommandContent>number(if (j4nwc63q-CI-0-IP-1='') then '0' else j4nwc63q-CI-0-IP-1)+ number(if (j4nwc63q-CI-0-IP-2='') then '0' else j4nwc63q-CI-0-IP-2)+
+						number(if (j4nwc63q-CI-0-IP-3='') then '0' else j4nwc63q-CI-0-IP-3)+ number(if (j4nwc63q-CI-0-IP-4='') then '0' else j4nwc63q-CI-0-IP-4)+ number(if (j4nwc63q-CI-0-IP-5='') then '0' else j4nwc63q-CI-0-IP-5)+
+						number(if (j4nwc63q-CI-0-IP-6='') then '0' else j4nwc63q-CI-0-IP-6)+ number(if (j4nwc63q-CI-0-IP-7='') then '0' else j4nwc63q-CI-0-IP-7)+ number(if (j4nwc63q-CI-0-IP-8='') then '0' else j4nwc63q-CI-0-IP-8)+
+						number(if (j4nwc63q-CI-0-IP-9='') then '0' else j4nwc63q-CI-0-IP-9)+ number(if (j4nwc63q-CI-0-IP-10='') then '0' else j4nwc63q-CI-0-IP-10)!= 100 </r:CommandContent>
                </r:Command>
             </r:CommandCode>
             <!--<r:TypeOfComputationItem>error</r:TypeOfComputationItem>-->
@@ -1242,12 +1072,11 @@
             <r:Agency>fr.insee</r:Agency>
             <r:ID>d12-SI</r:ID>
             <r:Version>0.1.0</r:Version>
-            <d:InterviewerInstructionReference>
-               <r:Agency>fr.insee</r:Agency>
-               <r:ID>d12</r:ID>
-               <r:Version>0.1.0</r:Version>
-               <r:TypeOfObject>Instruction</r:TypeOfObject>
-            </d:InterviewerInstructionReference>
+            <d:DisplayText>
+               <d:LiteralText>
+                  <d:Text xml:lang="fr-FR"><xhtml:p><xhtml:b>Now we are going to know if you think that Jay is a gluton.</xhtml:b></xhtml:p></d:Text>
+               </d:LiteralText>
+            </d:DisplayText>
          </d:StatementItem>
       </d:ControlConstructScheme>
       <d:QuestionScheme>
@@ -1362,8 +1191,8 @@
                <r:Description>
                   <r:Content>
                      <xhtml:div class="FlowControl" id="j6p6my1d">
-                        <xhtml:div class="Description">If you are not ready, please go to the end of
-          the questionnaire</xhtml:div>
+                        <xhtml:div class="Description">If you are not ready, please go to the end of the
+					questionnaire</xhtml:div>
                         <xhtml:div class="Expression">$READY != '1'</xhtml:div>
                         <xhtml:div class="IfTrue">j6z12s2d</xhtml:div>
                      </xhtml:div>
@@ -1551,7 +1380,7 @@
             <d:QuestionText>
                <d:LiteralText>
                   <d:Text xml:lang="fr-FR">In your opinion, how much is the part of audience share in US for the 2016
-          season?</d:Text>
+					season? </d:Text>
                </d:LiteralText>
             </d:QuestionText>
             <d:NumericDomain decimalPositions="1">
@@ -3014,7 +2843,7 @@
             <d:QuestionText>
                <d:LiteralText>
                   <d:Text xml:lang="fr-FR">Please, specify the percentage of Jay's expenses in the Kwik-E-Mart for each
-          product?</d:Text>
+					product? </d:Text>
                </d:LiteralText>
             </d:QuestionText>
             <d:GridDimension displayCode="false" displayLabel="false" rank="1">
@@ -3425,7 +3254,7 @@
             </r:Binding>
             <d:QuestionText>
                <d:LiteralText>
-                  <d:Text xml:lang="fr-FR">Who did these clownings and tell us what you remember?</d:Text>
+                  <d:Text xml:lang="fr-FR">Who did these clownings and tell us what you remember? </d:Text>
                </d:LiteralText>
             </d:QuestionText>
             <d:GridDimension displayCode="false" displayLabel="false" rank="1">
@@ -4177,7 +4006,7 @@
             <d:QuestionText>
                <d:LiteralText>
                   <d:Text xml:lang="fr-FR">Which of the following means of transport were used by the hero and in which
-          country?</d:Text>
+					country? </d:Text>
                </d:LiteralText>
             </d:QuestionText>
             <d:GridDimension displayCode="false" displayLabel="false" rank="1">
@@ -8585,7 +8414,7 @@
                <r:String xml:lang="fr-FR">CLOWNING21</r:String>
             </l:VariableName>
             <r:Label>
-               <r:Content xml:lang="fr-FR">Loose the violin of his daughter playing poker-Clowning</r:Content>
+               <r:Content xml:lang="fr-FR">Loose the violin of his daughter playing poker-Clowning </r:Content>
             </r:Label>
             <r:SourceParameterReference>
                <r:Agency>fr.insee</r:Agency>
@@ -8681,7 +8510,7 @@
                <r:String xml:lang="fr-FR">CLOWNING22</r:String>
             </l:VariableName>
             <r:Label>
-               <r:Content xml:lang="fr-FR">Loose the violin of his daughter playing poker-Remember?</r:Content>
+               <r:Content xml:lang="fr-FR">Loose the violin of his daughter playing poker-Remember? </r:Content>
             </r:Label>
             <r:SourceParameterReference>
                <r:Agency>fr.insee</r:Agency>
@@ -10179,7 +10008,10 @@
                         <r:TypeOfObject>InParameter</r:TypeOfObject>
                      </r:TargetParameterReference>
                   </r:Binding>
-                  <r:CommandContent>number(if (jbcggtca-IP-1='') then '0' else jbcggtca-IP-1) + number(if (jbcggtca-IP-2='') then '0' else jbcggtca-IP-2) + number(if (jbcggtca-IP-3='') then '0' else jbcggtca-IP-3) + number(if (jbcggtca-IP-4='') then '0' else jbcggtca-IP-4) + number(if (jbcggtca-IP-5='') then '0' else jbcggtca-IP-5) + number(if (jbcggtca-IP-6='') then '0' else jbcggtca-IP-6) + number(if (jbcggtca-IP-7='') then '0' else jbcggtca-IP-7) + number(if (jbcggtca-IP-8='') then '0' else jbcggtca-IP-8) + number(if (jbcggtca-IP-9='') then '0' else jbcggtca-IP-9) + number(if (jbcggtca-IP-10='') then '0' else jbcggtca-IP-10)</r:CommandContent>
+                  <r:CommandContent>number(if (jbcggtca-IP-1='') then '0' else jbcggtca-IP-1)+ number(if (jbcggtca-IP-2='') then '0' else jbcggtca-IP-2)+ number(if (jbcggtca-IP-3='') then '0' else jbcggtca-IP-3)+
+				number(if (jbcggtca-IP-4='') then '0' else jbcggtca-IP-4)+ number(if (jbcggtca-IP-5='') then '0' else jbcggtca-IP-5)+ number(if (jbcggtca-IP-6='') then '0' else jbcggtca-IP-6)+
+				number(if (jbcggtca-IP-7='') then '0' else jbcggtca-IP-7)+ number(if (jbcggtca-IP-8='') then '0' else jbcggtca-IP-8)+ number(if (jbcggtca-IP-9='') then '0' else jbcggtca-IP-9)+
+				number(if (jbcggtca-IP-10='') then '0' else jbcggtca-IP-10)</r:CommandContent>
                </r:Command>
             </r:CommandCode>
             <d:ControlConstructReference>

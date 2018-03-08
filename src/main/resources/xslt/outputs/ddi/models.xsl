@@ -60,7 +60,7 @@
                     <r:ID><xsl:value-of select="concat('InterviewerInstructionScheme-', enoddi32:get-id($source-context))"/></r:ID>
                     <r:Version><xsl:value-of select="enoddi32:get-version($source-context)"/></r:Version>
                     <r:Label><r:Content xml:lang="{enoddi32:get-lang($source-context)}">A définir</r:Content></r:Label>
-                    <xsl:apply-templates select="enoddi32:get-instructions($source-context) | enoddi32:get-controls($source-context)" mode="source">
+                    <xsl:apply-templates select="enoddi32:get-instructions($source-context)[not(enoddi32:get-position(.) = 'BEFORE_QUESTION_TEXT')] | enoddi32:get-controls($source-context)" mode="source">
                         <xsl:with-param name="driver" select="eno:append-empty-element('driver-InterviewerInstructionScheme', .)" tunnel="yes"/>
                         <xsl:with-param name="agency" select="$agency" as="xs:string" tunnel="yes"/>
                     </xsl:apply-templates>
@@ -355,12 +355,14 @@
                 </d:LiteralText>
                 <xsl:if test="enoddi32:is-with-conditionnal-text($source-context) = true()">
                     <d:ConditionalText>
+                        <xsl:for-each select="enoddi32:get-related-variable($source-context)[enoddi32:get-type(.) = ('CollectedVariableType','CalculatedVariableType')]">
                         <r:SourceParameterReference>
                             <r:Agency><xsl:value-of select="$agency"/></r:Agency>
-                            <r:ID><xsl:value-of select="enoddi32:get-qop-conditional-text-id($source-context)"/></r:ID>
-                            <r:Version><xsl:value-of select="enoddi32:get-version($source-context)"/></r:Version>                            
+                            <r:ID><xsl:value-of select="enoddi32:get-qop-id(.)"/></r:ID>
+                            <r:Version><xsl:value-of select="enoddi32:get-version(.)"/></r:Version>                            
                             <r:TypeOfObject>OutParameter</r:TypeOfObject>
                         </r:SourceParameterReference>
+                        </xsl:for-each>
                     </d:ConditionalText>
                 </xsl:if>
             </d:InstructionText>
@@ -590,6 +592,9 @@
             <d:TypeOfSequence codeListID="INSEE-TOS-CL-1">
                 <xsl:value-of select="enoddi32:get-sequence-type($source-context)"/>
             </d:TypeOfSequence>
+            <xsl:apply-templates select="enoddi32:get-related-controls($source-context)" mode="source">
+                <xsl:with-param name="driver" select="." tunnel="yes"/>
+            </xsl:apply-templates>
             <xsl:apply-templates select="eno:child-fields($source-context)" mode="source">
                 <xsl:with-param name="driver" select="." tunnel="yes"/>
             </xsl:apply-templates>
@@ -601,7 +606,18 @@
         <xsl:param name="expression"/>
         <xsl:param name="current-variable-with-id"/>
         <xsl:variable name="next-variable-with-id" select="$current-variable-with-id/following-sibling::*[1]"/>
-        <xsl:variable name="new-expression" select="replace($expression,concat('\$',$current-variable-with-id/name),$current-variable-with-id/command-id)"/>
+<!--        <xsl:variable name="new-expression" select="replace($expression,concat('\$',$current-variable-with-id/name),$current-variable-with-id/command-id)"/>-->
+        <xsl:variable name="current-variable-name" select="$current-variable-with-id/name"/>
+        <xsl:variable name="new-expression">
+            <xsl:analyze-string select="$expression" regex="(\${$current-variable-name})( |$)">
+                <xsl:matching-substring>
+                    <xsl:value-of select="$current-variable-with-id/command-id"/>
+                </xsl:matching-substring>
+                <xsl:non-matching-substring>
+                    <xsl:copy-of select="."/>
+                </xsl:non-matching-substring>
+            </xsl:analyze-string>
+        </xsl:variable>
         <xsl:choose>
             <xsl:when test="$next-variable-with-id">
                 <xsl:call-template name="replace-pogues-name-variable-by-ddi-id-ip">
@@ -623,9 +639,16 @@
                 <r:Agency><xsl:value-of select="$agency"/></r:Agency>
                 <r:ID><xsl:value-of select="enoddi32:get-si-id($source-context)"/></r:ID>
                 <r:Version><xsl:value-of select="enoddi32:get-version($source-context)"/></r:Version>
-                <xsl:apply-templates select="$source-context" mode="source">
+                <!--<xsl:apply-templates select="$source-context" mode="source">
                     <xsl:with-param name="driver" select="eno:append-empty-element('driver-InterviewerInstructionReference',.)" tunnel="yes"/>
-                </xsl:apply-templates>
+                </xsl:apply-templates>-->
+            <d:DisplayText>
+                <d:LiteralText>
+                    <d:Text xml:lang="{enoddi32:get-lang($source-context)}">
+                        <xsl:value-of select="enoddi32:get-instruction-text($source-context)"/>
+                    </d:Text>
+                </d:LiteralText>
+            </d:DisplayText>
         </d:StatementItem>
     </xsl:template>
     
@@ -716,13 +739,17 @@
         <xsl:variable name="related-variables-with-id">
             <xsl:for-each select="$related-variables">
                 <xsl:variable name="ip-id" select="enoddi32:get-ip-id($source-context,position())"/>
-                <xsl:variable name="related-response" select="enoddi32:get-related-response(.)"/>                
-                <xsl:if test="not($related-response)"><xsl:message select="'Only collected variables are correctly implemented'"/></xsl:if>                
+                <xsl:variable name="related-response" select="enoddi32:get-related-response(.)"/>                                
+                <!-- A container is created to save all the pre-calculted data to output the command. -->
                 <Container xmlns="" xsl:exclude-result-prefixes="#all">
+                    <!-- Corresponding to the inputParameter id. -->
                     <ip-id><xsl:value-of select="$ip-id"/></ip-id>
-                    <command-id><xsl:value-of select="enoddi32:get-command-id($related-response,$ip-id)"/></command-id>
+                    <!-- Corresponding to the id used in the final command code for the current variable. -->
+                    <command-id><xsl:value-of select="enoddi32:get-command-id(.,$ip-id)"/></command-id>
+                    <!-- Corresponding to the Out Parameter.
+                        TODO : Rename correctly the getter, to get-op-id ?-->
                     <qop-id>
-                        <xsl:value-of select="enoddi32:get-qop-id($related-response)"/>
+                        <xsl:value-of select="enoddi32:get-qop-id(.)"/>
                     </qop-id>
                     <name><xsl:value-of select="enoddi32:get-name(.)"/></name>                   
                 </Container>
@@ -867,9 +894,11 @@
             <r:Version><xsl:value-of select="enoddi32:get-version($source-context)"/></r:Version>
             <r:TypeOfObject><xsl:value-of select="enoddi32:get-reference-element-name($source-context)"/></r:TypeOfObject>
         </d:ControlConstructReference>
-        <xsl:apply-templates select="enoddi32:get-related-controls($source-context)" mode="source">
-            <xsl:with-param name="driver" select="." tunnel="yes"/>
-        </xsl:apply-templates>                    
+        <xsl:if test="not(name()=('Sequence','IfThenElse'))">
+            <xsl:apply-templates select="enoddi32:get-related-controls($source-context)" mode="source">
+                <xsl:with-param name="driver" select="." tunnel="yes"/>
+            </xsl:apply-templates>
+        </xsl:if>
     </xsl:template>
    
     <xsl:template match="QuestionSimple//ResponseDomain" mode="model" priority="1">
